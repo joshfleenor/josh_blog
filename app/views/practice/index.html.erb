@@ -1,0 +1,30 @@
+<style>
+	#center_me_up {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+</style>
+
+<h1 id="center_me_up">Choose a color!</h1>
+
+<div id="center_me_up">
+<% if !@name.blank? %>
+	<h2>Welcome Back, <%= @name %></h2>
+<% end %>
+</div>
+
+<p>
+	<%= link_to "Red", about_path(color: "red") %>
+</p>
+<p>
+	<%= link_to "Blue", about_path(color: "blue") %>
+</p>
+<p>
+	<%= link_to "Green", about_path(color: "green") %>
+</p>
+<p>
+	<%= link_to "Yellow", about_path(color: "yellow") %>
+</p>
+

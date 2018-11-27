@@ -1,0 +1,42 @@
+
+<style>
+	#color_me_in {
+		background-color: <%= @color %>;
+		color: white;
+		width: 250px;
+		height: 259px;
+		border-radius: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+</style>
+
+<style>
+	#center_me_up {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+</style>
+
+<h1 id="center_me_up">LOOK @ THIS!</h1>
+
+<div id="center_me_up">
+	<div id="color_me_in" >
+		<p>
+			<%= @color.upcase %> BOX ACTIVATED
+		</p>
+	</div>	
+</div>
+
+<div id="center_me_up">
+	<%= form_tag index_path do %>
+		<p><%= text_field_tag :name, nil, placeholder: "Whats your name?" %></p>
+		<p id="center_me_up"><%= submit_tag :submit %></p>
+	<% end %>
+</div>
+
+
