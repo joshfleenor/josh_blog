@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1>All posts by <%= @user.username %> </h1>
 
 <table class="table table-hover">
   <thead>
@@ -13,12 +13,12 @@
   </thead>
 
   <tbody>
-    <% @posts.each do |post| %>
+    <% @user.posts.each do |post| %>
       <tr>
         <td><%= post.title %></td>
-        <td><%= link_to post.user.username, user_posts_path(name: post.user.username) %> 
+        <td><%= post.user.username %> 
           <%= image_tag profile_pic(post.user.avatar.url), size: 30 %>
-         </td>
+        </td>
         <td><%= post.blog_entry.html_safe %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
@@ -30,8 +30,5 @@
 
 <br>
 
-<%= paginate @posts %>
 
-<%= link_to 'New Post', new_post_path %>
-
-
+<%= link_to 'Back', posts_path %>

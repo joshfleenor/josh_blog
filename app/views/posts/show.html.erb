@@ -8,17 +8,17 @@
   			<strong>Title:</strong>
   			<%= @post.title %>
   			<br>
-  			<%= @post.author %> posted <%= time_ago_in_words(@post.created_at) %> ago
+  			<%= link_to @post.user.username, user_posts_path(name: @post.user.username) %> posted <%= time_ago_in_words(@post.created_at) %> ago
 			</p>
         </div>
         <div class="panel-body">
         	<p>
   			<strong>Author:</strong>
-  			<%= @post.author %>
+  			<%= @post.user.username %>
 			</p>
           	<p>
   			<strong>Blog entry:</strong>
-  			<%= @post.blog_entry %>
+  			<%= @post.blog_entry.html_safe %>
 			</p>
         </div>
         <div class="panel-footer">
@@ -31,10 +31,12 @@
 <% @post.comments.each do |comment| %>
 	<div class="panel panel-default">
         <div class="panel-heading">
-		<p><%= comment.author %> said <%= time_ago_in_words(comment.created_at) %> ago</p>
+		<p><%= image_tag profile_pic(comment.user.avatar.url), size: 30 %> 
+      <%= link_to comment.user.username, user_posts_path(name: comment.user.username) %> said 
+      <%= time_ago_in_words(comment.created_at) %> ago</p>
 		</div>
 		<div class="panel-body">
-		<p><%= comment.comment_entry %></p>
+		<p><%= comment.comment_entry.html_safe %></p>
 		</div>
 	</div>
 

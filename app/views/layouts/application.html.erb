@@ -3,12 +3,12 @@
   <head>
     <title>JoshBlog</title>
     <%= csrf_meta_tags %>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+<!--   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
   <a class="navbar-brand" href="#">Fleenor</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -18,12 +18,24 @@
       <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#">Posts</a>
       <a class="nav-item nav-link" href="#">Beyond</a>
-      <a class="nav-item nav-link disabled" href="#">Disabled</a>
     </div>
   </div>
+</nav> -->
+
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#"><i class="far fa-lightbulb"></i> Think About I.T.</a>
 </nav>
 
-
+<div class="container" justify-content: center>
+<div>
+	<% if user_signed_in? %>
+      	<h5>Welcome <%= current_user.username %></h5> 
+    	<%= image_tag profile_pic(current_user.avatar.url), size: 30 %>
+      	<%= link_to "sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+    	<% end %> 
+    	<%= link_to "Edit Profile", edit_user_registration_path, class:"btn btn-primary" %>
+</div>
+</div>
 
   <body>
   	<div class="container">
